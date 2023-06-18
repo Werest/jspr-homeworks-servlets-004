@@ -1,7 +1,6 @@
 package ru.netology.servlet;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import ru.netology.config.Config;
 import ru.netology.controller.PostController;
 
 import javax.servlet.http.HttpServlet;
@@ -16,10 +15,12 @@ public class MainServlet extends HttpServlet {
   private static final String DELETE = "DELETE";
   private static final String API_POSTS = "/api/posts";
   private static final String API_POSTS_D_PLUS = "/api/posts/\\d+";
+  private static final String DIR_CONTEXT = "ru.netology";
+
 
   @Override
   public void init() {
-    final var context = new AnnotationConfigApplicationContext(Config.class);
+    final var context = new AnnotationConfigApplicationContext(DIR_CONTEXT);
     controller = context.getBean(PostController.class);
   }
 
